@@ -1,0 +1,26 @@
+{
+  "name": "golf-cart-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "docker compose -f compose.yaml up -d",
+    "down": "docker compose -f compose.yaml down",
+    "prune": "docker compose -f compose.yaml down --rmi all --volumes",
+    "rebuild": "npm run prune && npm run up",
+    "rebuild:install": "npm run prune && npm run if && npm run ib && npm run up",
+    "if": "cd frontend && rm -rf node_modules package-lock.json && npm i",
+    "ib": "cd backend && rm -rf node_modules package-lock.json && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyranth/golf-cart-management.git"
+  },
+  "author": "Scott Toews",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cyranth/golf-cart-management/issues"
+  },
+  "homepage": "https://github.com/Cyranth/golf-cart-management#readme",
+  "description": ""
+}

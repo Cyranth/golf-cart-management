@@ -1,18 +1,19 @@
-version: '3.9'
-
 services:
-  db:
-    container_name: db
-    image: postgres:13
-    restart: always
-    environment:
-      POSTGRES_DB: golfcartdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+  backend:
+    restart: on-failure
+    build:
+      context: ./backend
+      dockerfile: .docker/Dockerfile
+      args:
+        - BASE_IMAGE_TAG=${BASE_IMAGE_TAG:-22-bullseye-slim}
     ports:
-      - "5432:5432"
+      - "3000:3000"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - app-network
 
-volumes:
-  pgdata: {}
+networks:
+  app-network:
+    driver: bridge
