@@ -11,6 +11,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE ${API_PORT}
 
 CMD ["npm", "start"]
