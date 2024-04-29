@@ -1,0 +1,31 @@
+{
+   "compilerOptions": {
+      //Type Checking Options
+      "alwaysStrict": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      //Modules
+      "baseUrl": "./src",
+      "moduleResolution": "NodeNext",
+      "module": "NodeNext",
+      "resolveJsonModule": true,
+      //JavaScript
+      "allowJs": true,
+      "checkJs": true,
+      //Interop
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      //Emits
+      "outDir": "./build",
+      "sourceMap": true,
+      //Language and Environment
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "target": "es6",
+      //Output Format
+      "skipLibCheck": true,
+   }
+}
