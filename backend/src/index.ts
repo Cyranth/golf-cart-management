@@ -1,6 +1,6 @@
-const express = require('express');
-import { dataSource } from './database/datasource';
-import { logMessages } from './utils';
+import express, { Request, Response } from 'express'
+import { dataSource } from './database/datasource'
+import { logMessages } from './utils'
 
 const { API_PORT, DEBUG } = process.env;
 
@@ -16,7 +16,7 @@ const {
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/', (_req: Request, res: Response) => {
   res.send('Hello World');
 });
 
