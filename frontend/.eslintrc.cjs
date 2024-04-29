@@ -13,7 +13,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'plugin:@tanstack/eslint-plugin-query/recommended',
+    // 'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -21,7 +21,9 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-  plugins: ['@typescript-eslint', 'react-refresh', 'prettier', '@tanstack/query'],
+  plugins: ['@typescript-eslint', 'react-refresh', 'prettier',
+    // '@tanstack/query'
+  ],
   rules: {
     'prefer-destructuring': 0,
     'react/react-in-jsx-scope': 0,
