@@ -4,8 +4,18 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon src/index.ts"
+      "dev": "nodemon -L --exec ts-node src/index.ts",
+      "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+      "build": "tsc",
+      "start": "node ./dist/src/index.js",
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "typeorm": "ts-node ./node_modules/typeorm/cli.js ",
+      "migration:generate": "npm run typeorm -- migration:generate -d src/database/dataSource.ts",
+      "migration:run": "npm run build && npm run typeorm -- migration:run -d src/database/dataSource.ts",
+      "migration:run:no-build": "npm run typeorm -- migration:run -d src/database/dataSource.ts",
+      "migration:revert": "npm run typeorm -- migration:revert -d src/database/dataSource.ts",
+      "migration:create": "npm run typeorm -- migration:create"
    },
    "keywords": [],
    "author": "",

@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE ${API_PORT}
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
