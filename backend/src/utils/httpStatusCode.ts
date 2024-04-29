@@ -12,4 +12,4 @@ export const httpStatusCode = {
   INTERNAL_SERVER_ERROR: 500,
   NOT_IMPLEMENTED: 501,
   SERVICE_UNAVAIBLABLE: 503,
-};
+}

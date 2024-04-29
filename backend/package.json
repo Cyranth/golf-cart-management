@@ -6,6 +6,7 @@
    "scripts": {
       "dev": "nodemon -L --exec ts-node src/index.ts",
       "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+      "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
       "build": "tsc",
       "start": "node ./dist/src/index.js",
       "test": "jest",

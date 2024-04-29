@@ -1,9 +1,16 @@
-import { DataSourceOptions, DataSource } from 'typeorm';
+import { DataSourceOptions, DataSource } from 'typeorm'
 
-const { DEBUG, POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_DB, NODE_ENV } =
-  process.env;
+const {
+  DEBUG,
+  POSTGRES_HOST,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_PORT,
+  POSTGRES_DB,
+  NODE_ENV,
+} = process.env
 
-const fileExtensions = NODE_ENV === 'production' ? 'js' : 'ts';
+const fileExtensions = NODE_ENV === 'production' ? 'js' : 'ts'
 
 export const dataSourceConfig: DataSourceOptions = {
   type: 'postgres',
@@ -17,6 +24,6 @@ export const dataSourceConfig: DataSourceOptions = {
   logging: DEBUG === 'true',
   entities: [`src/**/*entity.${fileExtensions}`],
   migrations: [`src/database/migrations/*.${fileExtensions}`],
-};
+}
 
-export const dataSource = new DataSource(dataSourceConfig);
+export const dataSource = new DataSource(dataSourceConfig)

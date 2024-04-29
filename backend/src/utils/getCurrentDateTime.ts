@@ -1,9 +1,9 @@
 interface IGetCurrentDateTime {
-  formattedDateUTC: string; // year-month-day
-  formattedTimeUTC: string; // hours:minutes:seconds
-  formattedDatePacific: string; // year-month-day
-  formattedTimePacific: string; // hours:minutes:seconds
-  pacificTimeZone: 'PT' | 'PST';
+  formattedDateUTC: string // year-month-day
+  formattedTimeUTC: string // hours:minutes:seconds
+  formattedDatePacific: string // year-month-day
+  formattedTimePacific: string // hours:minutes:seconds
+  pacificTimeZone: 'PT' | 'PST'
 }
 
 /**
@@ -13,18 +13,18 @@ interface IGetCurrentDateTime {
  * and time in the corresponding time zone.
  */
 export const getCurrentDateTime = (): IGetCurrentDateTime => {
-  const now = new Date();
+  const now = new Date()
 
   // UTC date and time
-  const yearUTC = now.getUTCFullYear();
-  const monthUTC = String(now.getUTCMonth() + 1).padStart(2, '0');
-  const dayUTC = String(now.getUTCDate()).padStart(2, '0');
-  const hoursUTC = String(now.getUTCHours()).padStart(2, '0');
-  const minutesUTC = String(now.getUTCMinutes()).padStart(2, '0');
-  const secondsUTC = String(now.getUTCSeconds()).padStart(2, '0');
+  const yearUTC = now.getUTCFullYear()
+  const monthUTC = String(now.getUTCMonth() + 1).padStart(2, '0')
+  const dayUTC = String(now.getUTCDate()).padStart(2, '0')
+  const hoursUTC = String(now.getUTCHours()).padStart(2, '0')
+  const minutesUTC = String(now.getUTCMinutes()).padStart(2, '0')
+  const secondsUTC = String(now.getUTCSeconds()).padStart(2, '0')
 
-  const formattedDateUTC = `${yearUTC}-${monthUTC}-${dayUTC}`;
-  const formattedTimeUTC = `${hoursUTC}:${minutesUTC}:${secondsUTC}`;
+  const formattedDateUTC = `${yearUTC}-${monthUTC}-${dayUTC}`
+  const formattedTimeUTC = `${hoursUTC}:${minutesUTC}:${secondsUTC}`
 
   // Pacific date and time
   const pacificFormatter = new Intl.DateTimeFormat('en-US', {
@@ -35,22 +35,26 @@ export const getCurrentDateTime = (): IGetCurrentDateTime => {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-  });
+  })
 
-  const pacificParts = pacificFormatter.formatToParts(now);
+  const pacificParts = pacificFormatter.formatToParts(now)
 
-  const formattedDatePacific = `${pacificParts.find((part) => part.type === 'year')?.value
-    }-${pacificParts.find((part) => part.type === 'month')?.value}-${pacificParts.find((part) => part.type === 'day')?.value
-    }`;
-  const formattedTimePacific = `${pacificParts.find((part) => part.type === 'hour')?.value
-    }:${pacificParts.find((part) => part.type === 'minute')?.value}:${pacificParts.find((part) => part.type === 'second')?.value
-    }`;
+  const formattedDatePacific = `${
+    pacificParts.find((part) => part.type === 'year')?.value
+  }-${pacificParts.find((part) => part.type === 'month')?.value}-${
+    pacificParts.find((part) => part.type === 'day')?.value
+  }`
+  const formattedTimePacific = `${
+    pacificParts.find((part) => part.type === 'hour')?.value
+  }:${pacificParts.find((part) => part.type === 'minute')?.value}:${
+    pacificParts.find((part) => part.type === 'second')?.value
+  }`
 
   // Determine Pacific Time Zone
-  const nowPacific = new Date(formattedDatePacific + 'T' + formattedTimePacific + 'Z');
-  const utcOffset = nowPacific.getTime() - now.getTime();
-  const isDST = utcOffset > 0 && utcOffset <= 3600000;
-  const pacificTimeZone = isDST ? 'PT' : 'PST';
+  const nowPacific = new Date(formattedDatePacific + 'T' + formattedTimePacific + 'Z')
+  const utcOffset = nowPacific.getTime() - now.getTime()
+  const isDST = utcOffset > 0 && utcOffset <= 3600000
+  const pacificTimeZone = isDST ? 'PT' : 'PST'
 
   return {
     formattedDateUTC,
@@ -58,5 +62,5 @@ export const getCurrentDateTime = (): IGetCurrentDateTime => {
     formattedDatePacific,
     formattedTimePacific,
     pacificTimeZone,
-  };
-};
+  }
+}
