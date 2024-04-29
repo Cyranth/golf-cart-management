@@ -1,15 +1,14 @@
 {
+   "extends": "../tsconfig.base.json",
    "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
-      ],
-      "target": "es5",
-      "module": "commonjs",
-      "moduleResolution": "node",
+      //Modules
+      "baseUrl": "./src",
+      "moduleResolution": "Node16",
+      "module": "Node16",
+      //Emits
       "outDir": "./build",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true
+      "sourceMap": true,
+      //Language and Environment
+      "target": "es6",
    }
 }
