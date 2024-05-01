@@ -1,6 +1,6 @@
-import express, { Request, Response } from 'express'
-import { dataSource } from './database/datasource'
-import { logMessages } from './utils'
+import { dataSource } from '@/database'
+import { logMessages } from '@/utils'
+import { app } from './app'
 
 const { API_PORT, DEBUG } = process.env
 
@@ -12,12 +12,6 @@ const {
   DATABASE_CONNECTION,
   DATABASE_CONNECTION_ERROR,
 } = logMessages
-
-const app = express()
-
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hello World')
-})
 
 dataSource
   .initialize()

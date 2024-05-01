@@ -3,22 +3,22 @@ import { httpStatusCode, errorWrapper } from '../../../utils'
 import { Service } from '../service/service.class'
 
 export class Controller<TEntity> {
-  getAllItems: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  getAllItems: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  getItemById: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  getItemById: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  getItemByWhere: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  getItemByWhere: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  createItem: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  createItem: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  createItems: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  createItems: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  updateItem: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  updateItem: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
-  deleteItem: (req: Request, res: Response, next: NextFunction) => Promise<void>
+  deleteItem: (_req: Request, _res: Response, _next: NextFunction) => Promise<void>
 
   constructor(service: Service<TEntity>) {
-    this.getAllItems = errorWrapper(async (req: Request, res: Response) => {
+    this.getAllItems = errorWrapper(async (_req: Request, res: Response) => {
       const allItems = await service.getAllItems()
 
       if (Array.isArray(allItems.data) && allItems.data.length === 0)
