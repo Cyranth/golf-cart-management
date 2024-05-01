@@ -19,11 +19,11 @@ dataSource
     console.info(DATABASE_CONNECTION)
     app.listen(Number(API_PORT), () => {
       // Log server start information.
-      console.info(SERVER_START)
       console.info(CURRENT_NODE_VERSION)
       console.info(UTC_DATE_TIME)
       console.info(PACIFIC_DATE_TIME)
       if (DEBUG) console.info("DEBUG is enabled. Set environment variable to 'false' to disable.")
+      console.info(SERVER_START)
     })
   })
   .catch((error) => {
